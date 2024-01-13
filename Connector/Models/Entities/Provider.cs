@@ -2,35 +2,35 @@
 
 public class Provider
 {
-
-    public string providerId { get; set; }
-    public List<string> locationIds { get; set; }
-    public string organisationType { get; set; }
-    public string ownershipType { get; set; }
-    public string type { get; set; }
-    public string name { get; set; }
-    public string brandId { get; set; }
-    public string brandName { get; set; }
-    public string registrationStatus { get; set; }
-    public string registrationDate { get; set; }
-    public string companiesHouseNumber { get; set; }
-    public string charityNumber { get; set; }
-    public string website { get; set; }
-    public string postalAddressLine1 { get; set; }
-    public string postalAddressLine2 { get; set; }
-    public string postalAddressTownCity { get; set; }
-    public string postalAddressCounty { get; set; }
-    public string region { get; set; }
-    public string postalCode { get; set; }
-    public string uprn { get; set; }
-    public double onspdLatitude { get; set; }
-    public double onspdLongitude { get; set; }
-    public string mainPhoneNumber { get; set; }
-    public string inspectionDirectorate { get; set; }
-    public string constituency { get; set; }
-    public string localAuthority { get; set; }
-    public List<DateOnly> lastInspection { get; set; }
+    public string ProviderId { get; set; }
+    public List<string> LocationIds { get; set; }
+    public string OrganisationType { get; set; }
+    public string OwnershipType { get; set; }
+    public string Type { get; set; }
+    public string Name { get; set; }
+    public string BrandId { get; set; }
+    public string BrandName { get; set; }
+    public string RegistrationStatus { get; set; }
+    public string RegistrationDate { get; set; }
+    public string CompaniesHouseNumber { get; set; }
+    public string CharityNumber { get; set; }
+    public string Website { get; set; }
+    public string PostalAddressLine1 { get; set; }
+    public string PostalAddressLine2 { get; set; }
+    public string PostalAddressTownCity { get; set; }
+    public string PostalAddressCounty { get; set; }
+    public string Region { get; set; }
+    public string PostalCode { get; set; }
+    public string Uprn { get; set; }
+    public double OnspdLatitude { get; set; }
+    public double OnspdLongitude { get; set; }
+    public string MainPhoneNumber { get; set; }
+    public string InspectionDirectorate { get; set; }
+    public string Constituency { get; set; }
+    public string LocalAuthority { get; set; }
+    public List<DateOnly> LastInspection { get; set; }
 
     public DateTimeOffset CachedOnDate { get; set; }
+
 
 }

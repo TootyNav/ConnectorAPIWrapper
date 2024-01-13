@@ -24,6 +24,8 @@ public class ProviderController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Provider>>> GetProvider()
     {
+
+
         return await _context.Provider.ToListAsync();
     }
 
