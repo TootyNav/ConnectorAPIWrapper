@@ -27,7 +27,7 @@ public class ProviderController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Provider>>> GetProvider()
     {
-        var ffff = await _cqcRepoService.GetProviders();
+        var ffff = await _cqcRepoService.GetProvider("1-10000227676");
         return await _context.Provider.ToListAsync();
     }
 

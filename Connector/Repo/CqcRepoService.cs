@@ -17,7 +17,7 @@
             return await httpClient.GetAsync(_url);
         }
 
-        public async Task<HttpResponseMessage> GetProvider(int id)
+        public async Task<HttpResponseMessage> GetProvider(string id)
         {
             var httpClient = _httpClientFactory.CreateClient(_httpName);
             return await httpClient.GetAsync(_url + id);
