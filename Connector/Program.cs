@@ -1,14 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Connector.Data;
+using Connector.Repo;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ConnectorContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectorContext") ?? throw new InvalidOperationException("Connection string 'ConnectorContext' not found.")));
 
-// Add services to the container.
+builder.Services.AddHttpClient("cqc", client =>
+{
+    client.BaseAddress = new Uri("https://api.cqc.org.uk/");
+});
+
+builder.Services.AddTransient<ICqcRepoService, CqcRepoService>();
+
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

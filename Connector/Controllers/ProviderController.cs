@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Connector.Data;
 using Connector.Models.Entities;
+using Connector.Repo;
 
 namespace Connector.Controllers;
 
@@ -15,17 +16,18 @@ namespace Connector.Controllers;
 public class ProviderController : ControllerBase
 {
     private readonly ConnectorContext _context;
+    private readonly ICqcRepoService _cqcRepoService;
 
-    public ProviderController(ConnectorContext context)
+    public ProviderController(ConnectorContext context, ICqcRepoService cqcRepoService)
     {
         _context = context;
+        _cqcRepoService = cqcRepoService;
     }
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Provider>>> GetProvider()
     {
-
-
+        var ffff = await _cqcRepoService.GetProviders();
         return await _context.Provider.ToListAsync();
     }
 
