@@ -49,18 +49,9 @@ public class CqcService : ICqcService
         {
             _context.Provider.Remove(oldProvider);
         }
-
-        try
-        {
-            newProvider.CachedOnDate = DateTimeOffset.Now;
-            await _context.Provider.AddAsync(newProvider);
-            await _context.SaveChangesAsync();
-        }
-        catch (Exception e)
-        {
-
-            throw e;
-        }
+        newProvider.CachedOnDate = DateTimeOffset.Now;
+        await _context.Provider.AddAsync(newProvider);
+        await _context.SaveChangesAsync();
     }
 }
 
