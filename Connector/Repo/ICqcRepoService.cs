@@ -8,5 +8,6 @@ namespace Connector.Repo
         Task<HttpResponseMessage> GetProvider(string id);
         Task<Provider?> GetProviderFromByte(HttpResponseMessage httpResponseMessage);
         Task<HttpResponseMessage> GetProviders();
+        Task<IEnumerable<ProviderSummary>?> GetProvidersFromByte(HttpResponseMessage httpResponseMessage);
     }
 }

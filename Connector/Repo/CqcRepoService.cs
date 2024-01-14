@@ -1,5 +1,6 @@
 ﻿using Connector.Models.Entities;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace Connector.Repo
 {
@@ -36,6 +37,16 @@ namespace Connector.Repo
             return provider;
         }
 
+        public async Task<IEnumerable<ProviderSummary>?> GetProvidersFromByte(HttpResponseMessage httpResponseMessage)
+        {
+            var jsonString = await httpResponseMessage.Content.ReadAsStringAsync();
+            var options = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
+            var jsonObject = JsonSerializer.Deserialize<JsonObject>(jsonString, options);
+            var providersJson = jsonObject["providers"].ToJsonString();
 
+            var provider = JsonSerializer.Deserialize<IEnumerable<ProviderSummary>>(providersJson, options);
+
+            return provider;
+        }
     }
 }

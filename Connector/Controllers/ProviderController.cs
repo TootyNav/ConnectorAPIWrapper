@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Connector.Data;
 using Connector.Models.Entities;
 using Connector.Repo;
-using System.Net.Http;
-using System.Text.Json;
-using Newtonsoft.Json;
 using Connector.Services;
-
 namespace Connector.Controllers;
 
 [Route("api/[controller]")]
@@ -29,22 +19,20 @@ public class ProviderController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Provider>>> GetProvider()
+    public async Task<ActionResult<IEnumerable<ProviderSummary>>> GetProvider()
     {
- 
+        var providers = await _CqcService.GetProviderSummary();
 
-        //var fff = await _CqcService.GetProvider("1-345678912");
-        var fff = await _CqcService.GetProvider("1-10000227676");
-
-        return Ok();
+        return providers == null ? NotFound() : Ok(providers);
     }
+
 
     [HttpGet("{id}")]
     public async Task<ActionResult<Provider>> GetProvider(string id)
     {
         var provider = await _CqcService.GetProvider(id);
 
-        return provider == null ? NotFound() : provider;
+        return provider == null ? NotFound() : Ok(provider);
     }
 
 }

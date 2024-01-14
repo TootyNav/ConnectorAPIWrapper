@@ -5,5 +5,6 @@ namespace Connector.Services
     public interface ICqcService
     {
         Task<Provider?> GetProvider(string id);
+        Task<IEnumerable<ProviderSummary>?> GetProviderSummary();
     }
 }

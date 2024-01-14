@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Connector.Models.Entities
+namespace Connector.Models.Entities;
+
+public class ProviderSummary
 {
-    public class ProviderSummary
-    {
-        [Key]
-        public string providerId { get; set; }
-        public string providerName { get; set; }
-    }
+    [Key]
+    public string providerId { get; set; }
+    public string providerName { get; set; }
 }
+
