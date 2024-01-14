@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 using Microsoft.EntityFrameworkCore;
 using Connector.Models.Entities;
 
@@ -14,6 +11,7 @@ namespace Connector.Data
         {
         }
 
-        public DbSet<Connector.Models.Entities.Provider> Provider { get; set; } = default!;
+        public DbSet<Provider> Provider { get; set; } = default!;
+        public DbSet<ProviderSummary> ProviderSummary { get; set; } = default!;
     }
 }
