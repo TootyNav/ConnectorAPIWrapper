@@ -2,7 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using Connector.Data;
 using Connector.Repo;
+using Connector.Services;
+
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddDbContext<ConnectorContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectorContext") ?? throw new InvalidOperationException("Connection string 'ConnectorContext' not found.")));
 
@@ -12,6 +15,7 @@ builder.Services.AddHttpClient("cqc", client =>
 });
 
 builder.Services.AddTransient<ICqcRepoService, CqcRepoService>();
+builder.Services.AddTransient<ICqcService, CqcService>();
 
 
 builder.Services.AddControllers();

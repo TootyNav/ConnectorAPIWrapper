@@ -11,6 +11,7 @@ using Connector.Repo;
 using System.Net.Http;
 using System.Text.Json;
 using Newtonsoft.Json;
+using Connector.Services;
 
 namespace Connector.Controllers;
 
@@ -18,36 +19,32 @@ namespace Connector.Controllers;
 [ApiController]
 public class ProviderController : ControllerBase
 {
-    private readonly ConnectorContext _context;
     private readonly ICqcRepoService _cqcRepoService;
+    private readonly ICqcService _CqcService;
 
-    public ProviderController(ConnectorContext context, ICqcRepoService cqcRepoService)
+    public ProviderController(ICqcRepoService cqcRepoService, ICqcService cqcService)
     {
-        _context = context;
         _cqcRepoService = cqcRepoService;
+        _CqcService = cqcService;
     }
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Provider>>> GetProvider()
     {
-        //var ffff = await _cqcRepoService.GetProvider("1-10000227676");
-        //var fddd = await _cqcRepoService.GetProviderFromByte(ffff);
+ 
 
+        //var fff = await _CqcService.GetProvider("1-345678912");
+        var fff = await _CqcService.GetProvider("1-10000227676");
 
-        return await _context.Provider.ToListAsync();
+        return Ok();
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<Provider>> GetProvider(string id)
     {
-        var provider = await _context.Provider.FindAsync(id);
+        var provider = await _CqcService.GetProvider(id);
 
-        if (provider == null)
-        {
-            return NotFound();
-        }
-
-        return provider;
+        return provider == null ? NotFound() : provider;
     }
 
 }
