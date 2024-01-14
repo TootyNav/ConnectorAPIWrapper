@@ -76,7 +76,8 @@ public class CqcService : ICqcService
 
     private async Task AddProvidersToDb(IEnumerable<ProviderSummary> providers)
     {
-        await _context.AddRangeAsync(providers);
+        await _context.ProviderSummary.AddRangeAsync(providers);
+        await _context.SaveChangesAsync();
     }
 }
 
