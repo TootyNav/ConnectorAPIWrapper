@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Connector.Data;
 using Connector.Models.Entities;
 using Connector.Repo;
+using System.Net.Http;
+using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace Connector.Controllers;
 
@@ -27,7 +30,10 @@ public class ProviderController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Provider>>> GetProvider()
     {
-        var ffff = await _cqcRepoService.GetProvider("1-10000227676");
+        //var ffff = await _cqcRepoService.GetProvider("1-10000227676");
+        //var fddd = await _cqcRepoService.GetProviderFromByte(ffff);
+
+
         return await _context.Provider.ToListAsync();
     }
 
